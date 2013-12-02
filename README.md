@@ -1,5 +1,7 @@
-#DOTActivityIndicator
-An acitivity indicator using three dots. ![screenshot](https://raw.github.com/wentingliu/DOTActivityIndicator/master/Indicator.png)
+#DOTActivityIndicator ![screenshot](https://raw.github.com/wentingliu/DOTActivityIndicator/master/Indicator.gif)
+An acitivity indicator using three dots.
+
+
 
 ##How to use it
   
