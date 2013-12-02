@@ -21,7 +21,7 @@
 		0420DE7A184C252900FB1BDB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0420DE5C184C252900FB1BDB /* UIKit.framework */; };
 		0420DE82184C252900FB1BDB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0420DE80184C252900FB1BDB /* InfoPlist.strings */; };
 		0420DE84184C252900FB1BDB /* SampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0420DE83184C252900FB1BDB /* SampleTests.m */; };
-		0420DE90184C254200FB1BDB /* DOTActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0420DE8F184C254200FB1BDB /* DOTActivityIndicator.m */; };
+		0420DE94184C493900FB1BDB /* DOTActivityIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 0420DE93184C493900FB1BDB /* DOTActivityIndicator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +54,8 @@
 		0420DE7F184C252900FB1BDB /* SampleTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SampleTests-Info.plist"; sourceTree = "<group>"; };
 		0420DE81184C252900FB1BDB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0420DE83184C252900FB1BDB /* SampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SampleTests.m; sourceTree = "<group>"; };
-		0420DE8E184C254200FB1BDB /* DOTActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOTActivityIndicator.h; sourceTree = "<group>"; };
-		0420DE8F184C254200FB1BDB /* DOTActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOTActivityIndicator.m; sourceTree = "<group>"; };
+		0420DE92184C493900FB1BDB /* DOTActivityIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOTActivityIndicator.h; sourceTree = "<group>"; };
+		0420DE93184C493900FB1BDB /* DOTActivityIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOTActivityIndicator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +85,7 @@
 		0420DE4C184C252900FB1BDB = {
 			isa = PBXGroup;
 			children = (
-				0420DE8D184C254200FB1BDB /* DOTAcitivtiyIndicator */,
+				0420DE91184C493900FB1BDB /* DOTActivtiyIndicator */,
 				0420DE5E184C252900FB1BDB /* Sample */,
 				0420DE7D184C252900FB1BDB /* SampleTests */,
 				0420DE57184C252900FB1BDB /* Frameworks */,
@@ -156,14 +156,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		0420DE8D184C254200FB1BDB /* DOTAcitivtiyIndicator */ = {
+		0420DE91184C493900FB1BDB /* DOTActivtiyIndicator */ = {
 			isa = PBXGroup;
 			children = (
-				0420DE8E184C254200FB1BDB /* DOTActivityIndicator.h */,
-				0420DE8F184C254200FB1BDB /* DOTActivityIndicator.m */,
+				0420DE92184C493900FB1BDB /* DOTActivityIndicator.h */,
+				0420DE93184C493900FB1BDB /* DOTActivityIndicator.m */,
 			);
-			name = DOTAcitivtiyIndicator;
-			path = ../DOTAcitivtiyIndicator;
+			name = DOTActivtiyIndicator;
+			path = ../DOTActivtiyIndicator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,7 +265,7 @@
 			files = (
 				0420DE6F184C252900FB1BDB /* ViewController.m in Sources */,
 				0420DE69184C252900FB1BDB /* AppDelegate.m in Sources */,
-				0420DE90184C254200FB1BDB /* DOTActivityIndicator.m in Sources */,
+				0420DE94184C493900FB1BDB /* DOTActivityIndicator.m in Sources */,
 				0420DE65184C252900FB1BDB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -475,6 +475,7 @@
 				0420DE89184C252900FB1BDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0420DE8A184C252900FB1BDB /* Build configuration list for PBXNativeTarget "SampleTests" */ = {
 			isa = XCConfigurationList;
@@ -483,6 +484,7 @@
 				0420DE8C184C252900FB1BDB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
