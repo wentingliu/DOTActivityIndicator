@@ -11,6 +11,8 @@ static CGFloat const kDefaultDotSize = 10;
 
 #import "DOTActivityIndicator.h"
 
+#import "HexColor.h"
+
 @implementation DOTActivityIndicator
 
 - (id)initWithFrame:(CGRect)frame
@@ -64,6 +66,14 @@ static CGFloat const kDefaultDotSize = 10;
     if (self.highlightedColor == nil) {
         self.highlightedColor = [UIColor blackColor];
     }
+    if (self.highlightedColors == nil) {
+        NSArray *colorStrings = @[@"F83F44", @"FF8900", @"FFC800", @"C6C800", @"3AB539", @"1FAB76", @"00A59F", @"0089B3", @"007FD2", @"876CD0", @"C15FB2", @"EB4D83"];
+        NSMutableArray *array = [NSMutableArray arrayWithCapacity:[colorStrings count]];
+        [colorStrings enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            [array addObject:[UIColor colorWithHexString:obj]];
+        }];
+        self.highlightedColors = [NSArray arrayWithArray:array];
+    }
     if (self.normalColor == nil) {
         self.normalColor = [UIColor colorWithWhite:0.8 alpha:1];
     }
@@ -110,19 +120,47 @@ static CGFloat const kDefaultDotSize = 10;
 - (void)startAnimating {
     _isAnimating = YES;
     
-    id highlightedColor = (id)_highlightedColor.CGColor;
-    id normalColor = (id)_normalColor.CGColor;
+    DOTActivityIndicatorOption colorOption = _option & 0xF;
+    NSArray *(^createOneRoundAnimationColorValues)(UIColor *highlightedColor, UIColor *normalColor, NSUInteger idx) =
+    ^(UIColor *highlightedColor, UIColor *normalColor, NSUInteger idx) {
+        NSArray *colors;
+        // Six frames for animation.
+        if (idx == 0) {
+            colors = @[normalColor, highlightedColor, normalColor,      normalColor,      normalColor, normalColor];
+        } else if (idx == 1) {
+            colors = @[normalColor, normalColor,      highlightedColor, normalColor,      normalColor, normalColor];
+        } else if (idx == 2) {
+            colors = @[normalColor, normalColor,      normalColor,      highlightedColor, normalColor, normalColor];
+        }
+        return colors;
+    };
     
-    // Six frames for animation.
-    NSArray *colorValues =
-        @[@[highlightedColor, normalColor,      normalColor,      normalColor, normalColor, highlightedColor],
-          @[normalColor,      highlightedColor, normalColor,      normalColor, normalColor, normalColor],
-          @[normalColor,      normalColor,      highlightedColor, normalColor, normalColor, normalColor]];
+    NSArray *highlightedColors;
+    NSArray *colorValues;
+    NSTimeInterval duration;
+    
+    if (colorOption == DOTActivityIndicatorOptionColorSingle) {
+        highlightedColors = @[_highlightedColor];
+    } else if (colorOption == DOTActivityIndicatorOptionColorMultiple) {
+        highlightedColors = _highlightedColors;
+    }
+    NSMutableArray *values = [NSMutableArray arrayWithObjects:[NSMutableArray array], [NSMutableArray array], [NSMutableArray array], nil];
+    [highlightedColors enumerateObjectsUsingBlock:^(UIColor *color, NSUInteger idx, BOOL *stop) {
+        id highlightedColor = (id)color.CGColor;
+        id normalColor = (id)_normalColor.CGColor;
+        [values[0] addObjectsFromArray:createOneRoundAnimationColorValues(highlightedColor, normalColor, 0)];
+        [values[1] addObjectsFromArray:createOneRoundAnimationColorValues(highlightedColor, normalColor, 1)];
+        [values[2] addObjectsFromArray:createOneRoundAnimationColorValues(highlightedColor, normalColor, 2)];
+    }];
+    
+    colorValues = [NSArray arrayWithArray:values];
+    duration = [highlightedColors count] * (_animationDuration != 0 ? _animationDuration : DEFAULT_ANIMATION_DURATION);
+    
     [_dots enumerateObjectsUsingBlock:^(UIView *dot, NSUInteger idx, BOOL *stop) {
         CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"backgroundColor"];
         animation.values = colorValues[idx];
         animation.repeatCount = INFINITY;
-        animation.duration = _animationDuration != 0 ? _animationDuration : DEFAULT_ANIMATION_DURATION;
+        animation.duration = duration;
         [dot.layer addAnimation:animation forKey:@"color"];
     }];
 }

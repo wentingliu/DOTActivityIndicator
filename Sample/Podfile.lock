@@ -1,0 +1,17 @@
+PODS:
+  - DOTActivityIndicator (0.1.0):
+    - HexColors
+  - HexColors (2.2.1)
+
+DEPENDENCIES:
+  - DOTActivityIndicator (from `..`)
+
+EXTERNAL SOURCES:
+  DOTActivityIndicator:
+    :path: ..
+
+SPEC CHECKSUMS:
+  DOTActivityIndicator: 9b91c14d3511b75d595c128feda66919709812c6
+  HexColors: 3a68db077cd6572a8f7d4aa1add284dd2436a934
+
+COCOAPODS: 0.27.1

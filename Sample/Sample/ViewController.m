@@ -20,7 +20,8 @@
 {
     [super viewDidLoad];
 
-    DOTActivityIndicator *indicator = [DOTActivityIndicator indicatorWithDotSize:10];
+    DOTActivityIndicator *indicator = [DOTActivityIndicator indicatorWithDotSize:20];
+    indicator.option = DOTActivityIndicatorOptionColorMultiple;
 //    indicator.highlightedColor = [UIColor colorWithRed:0.13 green:0.32 blue:0.88 alpha:1];
     [self.view addSubview:indicator];
     CGSize size = self.view.bounds.size;
