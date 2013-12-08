@@ -11,9 +11,9 @@ typedef NS_OPTIONS(NSUInteger, DOTActivityIndicatorOption) {
     DOTActivityIndicatorOptionColorSingle     = 0 << 0, // Only one highlight color
     DOTActivityIndicatorOptionColorMultiple   = 1 << 0, // Multiple highlight colors will be used repeatedlly.
     
-    DOTActivityIndicatorOptionShapeCutomized  = 0 << 4, // To be implemented
-    DOTActivityIndicatorOptionShapeDot        = 0 << 4, // Dot shape
-    DOTActivityIndicatorOptionShapeArrow      = 1 << 4  // To be implemented
+    DOTActivityIndicatorOptionShapeCustomized = 0 << 4, // To be implemented
+    DOTActivityIndicatorOptionShapeDot        = 1 << 4, // Dot shape
+    DOTActivityIndicatorOptionShapeArrow      = 2 << 4  // To be implemented
 };
 
 @interface DOTActivityIndicator : UIView {
